@@ -1,0 +1,8 @@
+ext {
+    appName = [
+            release: "\"ReqRes POC\"",
+            debug  : "\"ReqRes POC [Q]\""
+    ]
+
+    reqresApiUrl = "\"https://reqres.in/\""
+}

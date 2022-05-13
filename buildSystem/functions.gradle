@@ -1,0 +1,12 @@
+ext {
+    log = { color, message ->
+        // https://github.com/marco-ruiz/stackoverflow-qa/blob/master/so-common/src/main/groovy/so/a56139852/coloringTask.gradle
+        // https://en.wikipedia.org/wiki/ANSI_escape_code
+        // black = 30, red = 31, green = 32, yellow = 33, blue = 34, magenta = 35, cyan = 36, white = 37
+        def style = 'black red green yellow blue magenta cyan white'
+                .split().toList().withIndex(30)
+                .collectEntries { key, val -> [(key) : { "\033[${val}m${it}\033[0m" }] }
+
+        println("${style[color](message)}")
+    }
+}

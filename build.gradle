@@ -1,5 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: 'buildSystem/functions.gradle'
+    apply from: 'buildSystem/dependencies.gradle'
+    apply from: 'buildSystem/versioning.gradle'
+
     repositories {
         google()
         mavenCentral()
@@ -10,6 +14,57 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                packagingOptions {
+                    exclude("META-INF/*.kotlin_module")
+                }
+                compileSdkVersion buildVersions.targetSdk
+                buildToolsVersion buildVersions.buildTools
+
+                defaultConfig {
+                    minSdkVersion buildVersions.minSdk
+                    targetSdkVersion buildVersions.targetSdk
+
+                    multiDexEnabled true
+
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+
+                kotlinOptions {
+                    jvmTarget = JavaVersion.VERSION_1_8
+                }
+
+                testOptions {
+                    animationsDisabled = true
+                    unitTests.returnDefaultValues = true
+                }
+            }
+
+            dependencies {
+                implementation "androidx.core:core-ktx:$coreKtxVersion"
+                implementation "androidx.appcompat:appcompat:$appCompatVersion"
+                implementation "com.google.android.material:material:$materialVersion"
+                implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+                / Log /
+                implementation "com.jakewharton.timber:timber:$timberVersion"
+
+                / Testing /
+                testImplementation "junit:junit:$junitVersion"
+            }
+        }
+
     }
 }
 

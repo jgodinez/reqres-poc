@@ -1,0 +1,44 @@
+ext {
+    defaultVersion = "v0.1.0"
+
+    getVersionByGitTag = {
+        return getVersionByTag(getLatestGitTag())
+    }
+
+    getVersionByLocalTag = { localTag ->
+        return getVersionByTag(localTag)
+    }
+
+    getVersionByTag = { versionTag ->
+        project.logger.debug("Tag: $versionTag")
+
+        def tagPattern = ~/^v(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.*/
+        def (_, major, minor, patch) = (versionTag =~ tagPattern)[0]
+        (major, minor, patch) = [major, minor, patch].collect{ it.toInteger() }
+
+        if (major > 209) throw new GradleException("Major version ${major} exceeds limit")
+        if (minor > 99) throw new GradleException("Minor version ${minor} exceeds limit")
+        if (patch > 99) throw new GradleException("Patch version ${patch} exceeds limit")
+
+        return [major, minor, patch]
+    }
+
+    getLatestGitTag = {
+        def latestTagCommit = "git rev-list --tags --max-count=1".execute().text.trim()
+        if (!latestTagCommit) {
+            return defaultVersion
+        }
+
+        return "git describe --tags $latestTagCommit".execute().text.trim()
+    }
+
+    generateVersionCode = { versionTag, versionBuild ->
+        def (versionMajor, versionMinor, versionPatch) = versionTag
+        return versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+    }
+
+    generateVersionName = { versionTag ->
+        def (versionMajor, versionMinor, versionPatch) = versionTag
+        return "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
+}
