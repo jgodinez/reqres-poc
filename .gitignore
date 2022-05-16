@@ -90,3 +90,5 @@ lint/tmp/
 # lint/reports/
 
 .DS_Store
+/.idea/render.experimental.xml
+/.idea/.gitignore
