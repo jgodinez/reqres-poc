@@ -51,7 +51,11 @@ android {
     }
 
     buildTypes.each {
-        it.resValue "string",  "app_name", appName[it.name]
+        / resvalues /
+        it.resValue "string", "app_name", appName[it.name]
+
+        / build config fields /
+        it.buildConfigField "String", "REQRES_API_URL", reqresApiUrl
     }
 
     buildFeatures {
@@ -68,5 +72,6 @@ android {
 }
 
 dependencies {
-
+    / Modules /
+    implementation project(':ui')
 }
