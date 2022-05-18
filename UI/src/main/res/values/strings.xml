@@ -1,2 +1,4 @@
 <resources>
+    <string name="dialog_error_title">- Error - </string>
+    <string name="dialog_error_ok">OK</string>
 </resources>
