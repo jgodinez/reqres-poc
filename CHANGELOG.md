@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README contains the basic description and guidelines of the project.
 - Basic gradle configuration and libraries dependencies.
 - Add basic ui structure (theme, styles, colors, dimens, string, launcher icons).
+- Add basic HTTP network configuration.
 
 <!--[Unreleased]: https://github.com/jgodinez/reqres-poc/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jgodinez/reqres-poc/releases/tag/v0.1.0-->

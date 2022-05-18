@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unknown_host_exception_error_message">Connection lost. Please try again later.</string>
+</resources>
