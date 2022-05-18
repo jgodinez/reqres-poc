@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ReqresPoc"
 include ':app'
 include ':ui'
+include ':remote'

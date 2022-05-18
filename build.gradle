@@ -14,8 +14,12 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.42'
     }
 }
+
+
+def excludedDIProjects = ['ui']
 
 subprojects {
     afterEvaluate { project ->
@@ -52,6 +56,8 @@ subprojects {
             }
 
             dependencies {
+                implementation "androidx.multidex:multidex:$multidexVersion"
+
                 implementation "androidx.core:core-ktx:$coreKtxVersion"
                 implementation "androidx.appcompat:appcompat:$appCompatVersion"
                 implementation "com.google.android.material:material:$materialVersion"
@@ -60,8 +66,18 @@ subprojects {
                 / Log /
                 implementation "com.jakewharton.timber:timber:$timberVersion"
 
+
                 / Testing /
                 testImplementation "junit:junit:$junitVersion"
+            }
+        }
+
+        if (!excludedDIProjects.contains(project.name)) {
+            dependencies {
+                / Injection /
+                api "com.google.dagger:hilt-android:$hiltVersion"
+                kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+                implementation "javax.inject:javax.inject:$javaxInjectVersion"
             }
         }
 

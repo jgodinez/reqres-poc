@@ -12,8 +12,20 @@ ext {
     materialVersion = '1.5.0'
     constraintLayoutVersion = '2.1.3'
 
+    multidexVersion = '2.0.1'
+
     / Log /
     timberVersion = '4.7.1'
+
+    / Remote /
+    retrofitVersion = '2.9.0'
+    loginInterceptorVersion = '5.0.0-alpha.7'
+    gsonVersion = '2.9.0'
+
+    / DI /
+    javaxInjectVersion = '1'
+    hiltVersion = '2.42'
+    hiltJetpackVersion = '1.0.0-alpha03'
 
     / Testing /
     mockitoVersion = '3.3.3'
