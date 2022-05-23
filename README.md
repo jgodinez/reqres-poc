@@ -14,7 +14,7 @@
 
 ## Architecture
 
-![logo](https://logos.keycdn.com/keycdn-logo.svg "Architecture diagram")
+![logo](/assets/architecture.png "Architecture diagram")
 
 More information? Take a look at the
 * [Guide to app architecture](https://developer.android.com/jetpack/guide)
