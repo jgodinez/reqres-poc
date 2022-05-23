@@ -4,11 +4,20 @@
 ![maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 
 ## Table of contents
+* [Architecture](#architecture)
 * [Installation](#installation)
 * [Links](#links)
 * [Technologies](#technologies)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
+* [Credits](#credits)
+
+## Architecture
+
+![logo](https://logos.keycdn.com/keycdn-logo.svg "Architecture diagram")
+
+More information? Take a look at the
+* [Guide to app architecture](https://developer.android.com/jetpack/guide)
 
 ## Installation
 As usual, clone this repository and import into **Android Studio**
@@ -17,22 +26,27 @@ git clone git@github.com:jgodinez/reqres-poc.git
 ```
 
 ## Links
-Since the project is based on clean architecture, the following links may come helpful:
 
-* [Guide to app architecture ](https://developer.android.com/jetpack/guide)
+##### Source-control branching model
 
-As for the main guidelines of the project:
+* [Trunk Based Development](https://trunkbaseddevelopment.com/)
 
-* [Kotlin style guide](https://developer.android.com/kotlin/style-guide)
+
+##### Commit guidelines
+
 * [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 * [keep a changelog](https://keepachangelog.com/en/1.0.0/)
 * [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
+##### Style guide
+
+* [Kotlin style guide](https://developer.android.com/kotlin/style-guide)
+
 ## Technologies
+* [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
-* [Retrofit](https://github.com/square/retrofit)
-* [Firebase](https://github.com/firebase/firebase-android-sdk)
+* [Retrofit](https://square.github.io/retrofit/)
 * [Mockito](https://github.com/mockito/mockito)
 
 ## Maintainers
@@ -40,4 +54,7 @@ This project is mantained by:
 * [Juan Godinez](https://github.com/jgodinez)
 
 ## Contributing
-Just make pull request!
+Want to contribute? Great! Just make pull request!
+
+## Credits
+* [REQRES](https://reqres.in/) - A hosted REST-API ready to respond to your AJAX requests.
