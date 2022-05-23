@@ -77,8 +77,8 @@ This value is required for debug buildType as part of versionNameSuffix and it w
 
 The value must be modified according to the following rules:
 
-[X] Restored to default value (1) in every release candidate version
-[X] Increased by 1 according to each feature release for testing
+- [x] Restored to default value (1) in every release candidate version
+- [x] Increased by 1 according to each feature release for testing
 
 ## Usage
 TODO
