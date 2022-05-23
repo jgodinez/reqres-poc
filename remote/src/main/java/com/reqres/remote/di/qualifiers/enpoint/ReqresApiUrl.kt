@@ -1,7 +1,7 @@
-package com.reqres.remote.qualifiers
+package com.reqres.remote.di.qualifiers.enpoint
 
 import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-internal annotation class ApiError
+annotation class ReqresApiUrl

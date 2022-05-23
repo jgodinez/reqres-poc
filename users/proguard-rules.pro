@@ -19,21 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
--assumenosideeffects class android.util.Log {
-  public static *** v(...);
-  public static *** d(...);
-  public static *** i(...);
-  public static *** w(...);
-  public static *** e(...);
-}
-
--assumenosideeffects class timber.log.Timber* {
-    public static *** v(...);
-    public static *** d(...);
-    public static *** i(...);
-}
-
--keepnames class ** { *; }
--keepnames interface ** { *; }
--keepnames enum ** { *; }
