@@ -6,6 +6,8 @@
 ## Table of contents
 * [Architecture](#architecture)
 * [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
 * [Links](#links)
 * [Technologies](#technologies)
 * [Maintainers](#maintainers)
@@ -21,9 +23,65 @@ More information? Take a look at the
 
 ## Installation
 As usual, clone this repository and import into **Android Studio**
+
 ```bash
 git clone git@github.com:jgodinez/reqres-poc.git
 ```
+
+## Configuration
+
+##### Keystore
+Include `buildSystem/keystore.jks` and `buildSystem/keystore.properties` with the following info:
+
+```properties
+storePassword='...'
+storeFile='...'
+releaseAlias='...'
+releasePassword='...'
+```
+
+##### Build variants
+Use the Android Studio *Build Variants* section to choose between **release** or **debug** build types.
+
+![logo](/assets/build_configuration.png "Build configuration")
+
+##### Build APK(s)
+
+Override *outputFileName* on build app
+
+```groovy
+applicationVariants.all { variant ->
+    variant.outputs.all {
+        def appName = rootProject.name.toLowerCase()
+        outputFileName = outputFileName.replace("app-", "$appName-").replaceAll(".apk", "-v${variant.versionName.replaceAll("-debug|-release", "")}.apk")
+    }
+}
+```
+
+This provides an output filename with the following structure:
+
+*app name* - *variant* - *version*
+
+```groovy
+reqrespoc-debug-v0.1.0.1.apk
+reqrespoc-release-v0.1.0.apk
+```
+
+Debug output file name includes *versionBuild* as the last value to identify the feature being tested.
+
+##### versionBuild
+
+*versionBuild* is included in app gradle configuration. 
+
+This value is required for debug buildType as part of versionNameSuffix and it will be displayed on the app info section. It is also required to generate the application version code. 
+
+The value must be modified according to the following rules:
+
+[X] Restored to default value (1) in every release candidate version
+[X] Increased by 1 according to each feature release for testing
+
+## Usage
+TODO
 
 ## Links
 
