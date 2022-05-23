@@ -1,4 +1,9 @@
 # REQRES POC Android
+
+Reqres is a POC app that uses [REQRES](https://reqres.in/) to create an experience with a data driven REST-API.
+
+![Clip](/assets/clip.gif?raw=true "REQRES POC")
+
 [![made-with-kotlin](https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 ![OS](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
