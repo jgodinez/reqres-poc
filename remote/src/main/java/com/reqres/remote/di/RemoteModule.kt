@@ -1,12 +1,15 @@
-package com.reqres.remote
+package com.reqres.remote.di
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.reqres.remote.qualifiers.ApiError
+import com.reqres.remote.BuildConfig
+import com.reqres.remote.R
+import com.reqres.remote.di.qualifiers.ApiError
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -34,14 +37,22 @@ object RemoteModule {
     }
 
     @Provides
-    fun providesLoginInterceptor(): Interceptor {
-        return HttpLoggingInterceptor()
+    fun providesLoginInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            val level =
+                if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor.Level.BODY
+                } else {
+                    HttpLoggingInterceptor.Level.NONE
+                }
+            setLevel(level)
+        }
     }
 
     @ApiError
     @Provides
     fun providesErrorInterceptor(
-        context: Context
+        @ApplicationContext context: Context
     ): Interceptor {
         return Interceptor { chain ->
             try {

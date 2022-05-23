@@ -25,8 +25,17 @@ android {
     }
 }
 dependencies {
+    / Remote /
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$loginInterceptorVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$loginInterceptorVersion"
+
+    / Coroutines /
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$coroutinesVersion"
+
+    / Injection /
+    api "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "javax.inject:javax.inject:$javaxInjectVersion"
 }
